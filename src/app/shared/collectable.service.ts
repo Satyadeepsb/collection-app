@@ -1,26 +1,35 @@
 import {Collectable} from "./collectable.model";
-import {Http, Response} from "@angular/http";
+import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {OnInit ,Injectable, } from "@angular/core";
 
 @Injectable()
 export class CollectableService implements OnInit{
-  private _url : string = "apidata/data.json";
+  public _url : string = "./apidata/data.json";
+  public collectables  : Collectable[] = [];
+  public collection: Collectable[] = [];
+  public demo : any[] = [];
 
-  private collectables  : Collectable[] = [];
-
-  private sss : any[] ;
-  private collection: Collectable[] = [];
-
-  constructor(private _http : Http){ }
+  constructor(private _http : Http){}
 
   getCollectables(){
     console.log(this.collectables);
+    // return this.collectables;
     return this._http.get(this._url).map((response : Response) => response.json());
   }
 
+
+
+  getMainCollectable(){
+    let body : any = {jsonData : {}};
+    let header = new Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
+    let options = new RequestOptions({headers : header,method : 'get'});
+    return this._http.get(this._url,options);
+  }
+
+
+
   ngOnInit() {
-    this._http.get(this._url).map((response : Response) => response.json().subscribe(resCollectionData => this.collectables = resCollectionData));
   }
 
 
@@ -35,6 +44,7 @@ export class CollectableService implements OnInit{
       }
     }
     this.collectables.push(item);
+    this.demo = this.collectables;
   }
 
   addToCollection(item : Collectable){
