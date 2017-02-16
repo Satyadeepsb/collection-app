@@ -22,6 +22,15 @@ export class CollectableService{
     return this.collection;
   }
 
+  newAdd(item:Collectable){
+    for (let value of this.collectables) {
+      if(item.description === value.description){
+        return;
+      }
+    }
+    this.collectables.push(item);
+  }
+
   addToCollection(item : Collectable){
     if(this.collection.indexOf(item) !== -1){
       return;

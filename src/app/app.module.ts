@@ -9,13 +9,16 @@ import { CollectionComponent } from './collection/collection.component';
 import {CollectableService} from "./shared/collectable.service";
 import { HeaderComponent } from './header.component';
 import {routing} from "./app.routing";
+import { CollectionFormComponent } from './collection-form/collection-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MarketComponent,
     CollectionComponent,
-    HeaderComponent
+    HeaderComponent,
+    CollectionFormComponent,
+    CollectionFormComponent
   ],
   imports: [
     BrowserModule,
