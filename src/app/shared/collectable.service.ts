@@ -1,22 +1,28 @@
 import {Collectable} from "./collectable.model";
-/**
- * Created by SARAL TECH on 2/16/2017.
- */
+import {Http, Response} from "@angular/http";
+import 'rxjs/add/operator/map';
+import {OnInit ,Injectable, } from "@angular/core";
 
-export class CollectableService{
+@Injectable()
+export class CollectableService implements OnInit{
+  private _url : string = "apidata/data.json";
 
-  private collectables  : Collectable[] = [
-    {description : 'A very rare copy of JQuery Book' , type : 'Book'},
-    {description : 'The first letter ever' , type : 'Piece of Paper'},
-    {description : 'A photo showing nothing' , type : 'Photo'},
-    {description : 'a box with solid zune' , type : 'Garbage'},
-  ];
+  private collectables  : Collectable[] = [];
 
+  private sss : any[] ;
   private collection: Collectable[] = [];
 
+  constructor(private _http : Http){ }
+
   getCollectables(){
-    return this.collectables;
+    console.log(this.collectables);
+    return this._http.get(this._url).map((response : Response) => response.json());
   }
+
+  ngOnInit() {
+    this._http.get(this._url).map((response : Response) => response.json().subscribe(resCollectionData => this.collectables = resCollectionData));
+  }
+
 
   getCollection(){
     return this.collection;
@@ -41,5 +47,7 @@ export class CollectableService{
   removeFromCollection(item : Collectable){
     this.collection.splice(this.collection.indexOf(item),1);
   }
+
+
 
 }
