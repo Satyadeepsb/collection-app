@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Collectable} from "../shared/collectable.model";
 import {CollectableService} from "../shared/collectable.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-market',
@@ -14,7 +15,8 @@ export class MarketComponent implements OnInit {
       this.collectableService.addToCollection(item);
   }
 
-  constructor(private collectableService : CollectableService) {
+  constructor(private collectableService : CollectableService,private route : Router) {
+
 
 
     this.collectableService.getMainCollectable().subscribe(
@@ -36,21 +38,14 @@ export class MarketComponent implements OnInit {
         console.log(this.collectables);
       }
     );
-
-
-   /* this.collectableService.getSub();
-
-    let aaa :any =this.collectableService.responseData;
-    console.log('aaaaa');
-    console.log(aaa);*/
-
-    /*this.collectableService.getCollectables()
-      .subscribe(resCollectionData => this.collectableService.collectables = resCollectionData);
-    console.log('Market');
-    console.log(this.collectableService.collectables);
-    this.collectables = this.collectableService.collectables;
-    console.log(this.collectables);*/
   }
+
+  onEditCollection(item : Collectable){
+    this.collectableService.qq= item;
+      this.route.navigate(['/add']);
+
+  }
+
 
   ngOnInit() {
     this.img ="../../apidata/1.jpg";

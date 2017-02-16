@@ -4,6 +4,7 @@
       <li class="list-group-item" *ngFor="let item of collectables">
          <span class="badge">{{item.type}}</span>
         <button class="btn btn-success" (click)="onAddToCollection(item)">Add To Collection</button>&nbsp;
+        <button class="btn btn-success" (click)="onEditCollection(item)">Edit Collection</button>&nbsp;
           {{item.description}}
       </li>
     </ul>

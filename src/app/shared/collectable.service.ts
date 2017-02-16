@@ -2,6 +2,7 @@ import {Collectable} from "./collectable.model";
 import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {OnInit ,Injectable, } from "@angular/core";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class CollectableService implements OnInit{
@@ -9,8 +10,9 @@ export class CollectableService implements OnInit{
   public collectables  : Collectable[] = [];
   public collection: Collectable[] = [];
   public demo : any[] = [];
+  public qq : any;
 
-  constructor(private _http : Http){}
+  constructor(private _http : Http,private  router : Router){}
 
   getCollectables(){
     console.log(this.collectables);
@@ -45,6 +47,8 @@ export class CollectableService implements OnInit{
     }
     this.collectables.push(item);
     this.demo = this.collectables;
+
+
   }
 
   addToCollection(item : Collectable){
