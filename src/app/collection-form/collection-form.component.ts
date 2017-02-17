@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Collectable} from "../shared/collectable.model";
 import {CollectableService} from "../shared/collectable.service";
 import {Router} from "@angular/router";
+import {DialogService, DialogComponent} from "ng2-bootstrap-modal";
 
 @Component({
   selector: 'app-collection-form',
   templateUrl: './collection-form.component.html',
   styleUrls: ['./collection-form.component.css']
 })
-export class CollectionFormComponent implements OnInit {
+export class CollectionFormComponent{
 
   collectionObject : Collectable ;
 
@@ -26,8 +27,6 @@ export class CollectionFormComponent implements OnInit {
     //this.router.navigate(['/market']);
   }
 
-  ngOnInit() {
 
-  }
 
 }

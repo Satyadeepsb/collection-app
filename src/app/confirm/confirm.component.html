@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" (click)="close()" >&times;</button>
+    <h4 class="modal-title">Add New Collection</h4>
+  </div>
+  <div class="modal-body">
+    <app-collection-form></app-collection-form>
+  </div>
+  <br>
+  <div>
+    <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+    <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
+  </div>
+
+</div>

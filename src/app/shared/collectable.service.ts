@@ -14,24 +14,14 @@ export class CollectableService implements OnInit{
 
   constructor(private _http : Http,private  router : Router){}
 
-  getCollectables(){
-    console.log(this.collectables);
-    // return this.collectables;
-    return this._http.get(this._url).map((response : Response) => response.json());
+  ngOnInit() {
   }
-
-
 
   getMainCollectable(){
     let body : any = {jsonData : {}};
     let header = new Headers({ 'Content-Type': 'application/json;charset=UTF-8' });
     let options = new RequestOptions({headers : header,method : 'get'});
     return this._http.get(this._url,options);
-  }
-
-
-
-  ngOnInit() {
   }
 
 
@@ -47,8 +37,6 @@ export class CollectableService implements OnInit{
     }
     this.collectables.push(item);
     this.demo = this.collectables;
-
-
   }
 
   addToCollection(item : Collectable){
